@@ -1,4 +1,10 @@
 
+console.log(makeAttack(12))
+
+// Test logic for advantage and disadvantage
+console.log(makeAttack(12, advantage = true, disadvantage = false))
+console.log(makeAttack(12, advantage = false, disadvantage = true))
+console.log(makeAttack(12, advantage = true, disadvantage = true))
 
 function rollDice(num, sides, modifier = 0){
 
@@ -18,11 +24,13 @@ function makeAttack(targetAC, advantage = false, disadvantage = false){
 
     let attackRoll = 0
 
-    if (advantage) {
+    if (advantage && !disadvantage) {
+        console.log("You have advantage")
         let rolls = [rollDice(1,20), rollDice(1,20)]
         console.log(rolls)
         attackRoll = Math.max(...rolls)
-    } else if (disadvantage) {
+    } else if (disadvantage && !advantage) {
+        console.log("You have disadvantage")
         let rolls = [rollDice(1,20), rollDice(1,20)]
         console.log(rolls)
         attackRoll = Math.min(...rolls)
@@ -40,7 +48,3 @@ function checkHit(roll, targetAC){
         return false
     }
 }
-
-console.log(makeAttack(12))
-console.log(makeAttack(12, advantage = true))
-console.log(makeAttack(12, disadvantage = true))
