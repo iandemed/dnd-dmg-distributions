@@ -1,17 +1,19 @@
 
-console.log(makeAttack(12))
-
-
 let damageDice = {
     num: 1,
     sides: 4,
-    modifier: 0
 }
 
+let modifiers = {
+    damage: 0,
+    hit: 0
+}
+
+
 // Test logic for advantage and disadvantage
-console.log(makeAttack(damageDice, 12, advantage = true, disadvantage = false))
-console.log(makeAttack(damageDice, 12, advantage = false, disadvantage = true))
-console.log(makeAttack(damageDice, 12, advantage = true, disadvantage = true))
+console.log(makeAttack(12, modifiers.hit, advantage = true, disadvantage = true))
+console.log(makeAttack(12, modifiers.hit, advantage = true, disadvantage = false))
+console.log(makeAttack(12, modifiers.hit, advantage = false, disadvantage = true))
 
 function rollDice(num, sides, modifier = 0){
 
@@ -27,7 +29,16 @@ function rollDice(num, sides, modifier = 0){
 
 }
 
-function makeAttack(damageDice, targetAC, advantage = false, disadvantage = false){
+
+function checkHit(roll, targetAC){
+    if (roll > targetAC) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function makeAttack(targetAC, modifier, advantage = false, disadvantage = false){
 
     let attackRoll = 0
 
@@ -36,7 +47,7 @@ function makeAttack(damageDice, targetAC, advantage = false, disadvantage = fals
         console.log(rolls)
         attackRoll = Math.max(...rolls)
     } else if (disadvantage && !advantage) {
-        let rolls = [rollDice(1,20), rollDice(1,20)]
+        let rolls = [rollDice(1,20, modifier), rollDice(1,20, modifier)]
         console.log(rolls)
         attackRoll = Math.min(...rolls)
     } else {
@@ -45,17 +56,15 @@ function makeAttack(damageDice, targetAC, advantage = false, disadvantage = fals
 
     console.log(`Attack: ${attackRoll}, AC: ${targetAC}`)
     
-    if (checkHit(attackRoll, targetAC)){
-        return rollDice(damageDice.num, damageDice.sides, damageDice.modifier)
+    if (attackRoll - modifier === 20){
+        // A natural 20 always results in a successful hit regardless of the roll
+        return {success: true, crit: true}
+    } else if (attackRoll - modifier === 1){
+        // A natural 1 always results in a miss regardless of the roll
+        return {success: false, crit: false}
+    } else if (checkHit(attackRoll, targetAC)){
+        return {success: true, crit: false}
     } else {
-        return 0
-    }
-}
-
-function checkHit(roll, targetAC){
-    if (roll > targetAC) {
-        return true
-    } else {
-        return false
+        return {success: false, crit: false}
     }
 }
