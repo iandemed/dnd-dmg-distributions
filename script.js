@@ -11,9 +11,9 @@ let modifiers = {
 
 
 // Test logic for advantage and disadvantage
-console.log(makeAttack(12, modifiers.hit, advantage = true, disadvantage = true))
-console.log(makeAttack(12, modifiers.hit, advantage = true, disadvantage = false))
-console.log(makeAttack(12, modifiers.hit, advantage = false, disadvantage = true))
+console.log(combatDamage(damageDice, modifiers, advantage = true, disadvantage = true))
+console.log(combatDamage(damageDice, modifiers, advantage = true, disadvantage = false))
+console.log(combatDamage(damageDice, modifiers, advantage = false, disadvantage = true))
 
 function rollDice(num, sides, modifier = 0){
 
@@ -28,7 +28,6 @@ function rollDice(num, sides, modifier = 0){
     return diceTotal
 
 }
-
 
 function checkHit(roll, targetAC){
     if (roll > targetAC) {
@@ -66,5 +65,18 @@ function makeAttack(targetAC, modifier, advantage = false, disadvantage = false)
         return {success: true, crit: false}
     } else {
         return {success: false, crit: false}
+    }
+}
+
+function combatDamage(damageDice, modifiers, advantage = false, disadvantage = false){
+    
+    let attack = makeAttack(12, modifiers.hit, advantage, disadvantage)
+
+    if (attack.success && attack.crit){
+        return rollDice(damageDice.num, damageDice.sides, modifiers.damage) + rollDice(damageDice.num, damageDice.sides, modifiers.damage)
+    } else if (attack.success){
+        return rollDice(damageDice.num, damageDice.sides, modifiers.damage)
+    } else {
+        return 0
     }
 }
