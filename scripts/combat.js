@@ -1,26 +1,10 @@
 
-let damageDice = {
-    num: 1,
-    sides: 4,
-}
-
-let modifiers = {
-    damage: 0,
-    hit: 0
-}
-
-
-// Test logic for advantage and disadvantage
-console.log(combatDamage(damageDice, modifiers, advantage = true, disadvantage = true))
-console.log(combatDamage(damageDice, modifiers, advantage = true, disadvantage = false))
-console.log(combatDamage(damageDice, modifiers, advantage = false, disadvantage = true))
-
 function rollDice(num, sides, modifier = 0){
 
     let diceTotal = 0
     
     // Roll the dice the specified number of times
-    for (i=0; i < num; i++){
+    for (let i=0; i < num; i++){
         // Modifiers are applied seperately to each roll
         diceTotal += 1 + Math.floor(Math.random() * (sides)) + modifier
     }
@@ -80,3 +64,5 @@ function combatDamage(damageDice, modifiers, advantage = false, disadvantage = f
         return 0
     }
 }
+
+export {rollDice, checkHit, makeAttack, combatDamage}
