@@ -26,7 +26,7 @@ function makeAttack(targetAC, modifier, advantage = false, disadvantage = false)
     let attackRoll = 0
 
     if (advantage && !disadvantage) {
-        let rolls = [rollDice(1,20), rollDice(1,20)]
+        let rolls = [rollDice(1,20, modifier), rollDice(1,20, modifier)]
         console.log(rolls)
         attackRoll = Math.max(...rolls)
     } else if (disadvantage && !advantage) {
@@ -34,7 +34,7 @@ function makeAttack(targetAC, modifier, advantage = false, disadvantage = false)
         console.log(rolls)
         attackRoll = Math.min(...rolls)
     } else {
-        attackRoll = rollDice(1,20)
+        attackRoll = rollDice(1,20, modifier)
     }
 
     console.log(`Attack: ${attackRoll}, AC: ${targetAC}`)

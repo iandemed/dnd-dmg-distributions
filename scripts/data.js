@@ -1,5 +1,9 @@
 import {combatDamage} from './combat.js'
 
+let dmgDistributions = {
+    bandit: []
+}
+
 
 let banditDamageDice = {
     num: 1,
@@ -14,7 +18,7 @@ let banditModifiers = {
 let banditDmgDist = []
 
 for (let i = 0; i < 1000; i++){
-    banditDmgDist.push(combatDamage(banditDamageDice, banditModifiers))
+    dmgDistributions.bandit.push(combatDamage(banditDamageDice, banditModifiers))
 }
 
-console.log(banditDmgDist)
+console.log(dmgDistributions.bandit)
