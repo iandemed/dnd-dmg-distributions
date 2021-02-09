@@ -1,7 +1,21 @@
+
+import {createDmgDist} from "./data.js"
+
 async function drawHistogram() {
 
     /*---- Load the data ----*/
-    const dataset = await d3.json("../data/dmgDistributions.json")
+
+    let banditDamageDice = {
+      num: 2,
+      sides: 12,
+    }
+  
+    let banditModifiers = {
+      damage: 1,
+      hit: 3
+    }
+
+    const dataset = createDmgDist(banditDamageDice, banditModifiers)
 
     console.log(dataset)
 
