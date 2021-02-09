@@ -1,5 +1,5 @@
 
-import {createDmgDist} from "./data.js"
+import {createDmgDist} from "./combat.js"
 
 async function drawHistogram() {
 

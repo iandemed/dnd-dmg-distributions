@@ -65,4 +65,17 @@ function combatDamage(damageDice, modifiers, advantage = false, disadvantage = f
     }
 }
 
-export {rollDice, checkHit, makeAttack, combatDamage}
+function createDmgDist(damageDice, modifiers, n = 1000){
+
+    let dmgDist = []
+
+    for (let i = 0; i < 1000; i++){
+        // I process the data in d3 as a JSON object, so I save the data
+        // accordingly
+        dmgDist.push({"dmg" : combatDamage(damageDice, modifiers)})
+    }
+
+    return dmgDist
+}
+
+export {createDmgDist}
