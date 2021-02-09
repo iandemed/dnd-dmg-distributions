@@ -17,8 +17,6 @@ async function drawHistogram() {
 
     const dataset = createDmgDist(banditDamageDice, banditModifiers)
 
-    console.log(dataset)
-
     const metricAccessor = d => d.dmg
     const yAccessor = d => d.length
 
@@ -127,7 +125,6 @@ async function drawHistogram() {
         .text("Damage")
         .style("text-transform", "capitalize")
     
-    console.log(bins)
 }
 
 drawHistogram()

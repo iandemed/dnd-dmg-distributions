@@ -27,17 +27,13 @@ function makeAttack(targetAC, modifier, advantage = false, disadvantage = false)
 
     if (advantage && !disadvantage) {
         let rolls = [rollDice(1,20, modifier), rollDice(1,20, modifier)]
-        console.log(rolls)
         attackRoll = Math.max(...rolls)
     } else if (disadvantage && !advantage) {
         let rolls = [rollDice(1,20, modifier), rollDice(1,20, modifier)]
-        console.log(rolls)
         attackRoll = Math.min(...rolls)
     } else {
         attackRoll = rollDice(1,20, modifier)
     }
-
-    console.log(`Attack: ${attackRoll}, AC: ${targetAC}`)
     
     if (attackRoll - modifier === 20){
         // A natural 20 always results in a successful hit regardless of the roll
