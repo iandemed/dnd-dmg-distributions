@@ -1,21 +1,10 @@
 
 import {createDmgDist} from "./combat.js"
 
-async function drawHistogram() {
+async function drawHistogram(dmgDice, modifiers) {
 
-    /*---- Load the data ----*/
-
-    let banditDamageDice = {
-      num: 2,
-      sides: 12,
-    }
-  
-    let banditModifiers = {
-      damage: 1,
-      hit: 3
-    }
-
-    const dataset = createDmgDist(banditDamageDice, banditModifiers)
+    /*---- Create the data ----*/
+    const dataset = createDmgDist(dmgDice, modifiers)
 
     const metricAccessor = d => d.dmg
     const yAccessor = d => d.length
@@ -127,4 +116,4 @@ async function drawHistogram() {
     
 }
 
-drawHistogram()
+export {drawHistogram}
