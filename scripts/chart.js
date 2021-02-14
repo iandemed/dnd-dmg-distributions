@@ -1,10 +1,10 @@
 
 import {createDmgDist} from "./combat.js"
 
-async function drawHistogram(dmgDice, modifiers) {
+async function drawHistogram(targetAC, dmgDice, modifiers) {
 
     /*---- Create the data ----*/
-    const dataset = createDmgDist(dmgDice, modifiers)
+    const dataset = createDmgDist(targetAC, dmgDice, modifiers)
 
     const metricAccessor = d => d.dmg
     const yAccessor = d => d.length
@@ -38,7 +38,7 @@ async function drawHistogram(dmgDice, modifiers) {
         - dimensions.margin.bottom
    
     /*---- Draw canvas ----*/
-    const wrapper = d3.select("#wrapper")
+    const wrapper = d3.select("#img-wrapper")
         .append("svg")
         .attr("width", dimensions.width)
         .attr("height", dimensions.height)

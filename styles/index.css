@@ -1,0 +1,21 @@
+#img-wrapper, .dash-panel {
+    display: inline-block;
+}
+
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    height: 360px;
+}
+
+#img-wrapper{
+    width: 600px;
+}
+
+.dash-panel{
+    width: 100%;
+}
+
+.slider, .wrapper {
+    width: 100%;
+}

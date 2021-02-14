@@ -48,9 +48,9 @@ function makeAttack(targetAC, modifier, advantage = false, disadvantage = false)
     }
 }
 
-function combatDamage(damageDice, modifiers, advantage = false, disadvantage = false){
+function combatDamage(targetAC, damageDice, modifiers, advantage = false, disadvantage = false){
     
-    let attack = makeAttack(12, modifiers.hit, advantage, disadvantage)
+    let attack = makeAttack(targetAC, modifiers.hit, advantage, disadvantage)
 
     if (attack.success && attack.crit){
         return rollDice(damageDice.num, damageDice.sides, modifiers.damage) + rollDice(damageDice.num, damageDice.sides, modifiers.damage)
@@ -61,14 +61,14 @@ function combatDamage(damageDice, modifiers, advantage = false, disadvantage = f
     }
 }
 
-function createDmgDist(damageDice, modifiers, n = 1000){
+function createDmgDist(targetAC, damageDice, modifiers, n = 1000){
 
     let dmgDist = []
 
     for (let i = 0; i < 1000; i++){
         // I process the data in d3 as a JSON object, so I save the data
-        // accordingly
-        dmgDist.push({"dmg" : combatDamage(damageDice, modifiers)})
+        // as an object with dmg as the "column"
+        dmgDist.push({"dmg" : combatDamage(targetAC, damageDice, modifiers)})
     }
 
     return dmgDist

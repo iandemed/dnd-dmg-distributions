@@ -11,4 +11,4 @@ let banditModifiers = {
     hit: 3
 }
 
-drawHistogram(banditDmgDice, banditModifiers)
+drawHistogram(12, banditDmgDice, banditModifiers)
