@@ -1,5 +1,6 @@
 
 import {createDmgDist} from "./combat.js"
+import * as d3 from 'd3'
 
 async function drawHistogram(targetAC, dmgDice, modifiers) {
 
@@ -38,7 +39,7 @@ async function drawHistogram(targetAC, dmgDice, modifiers) {
         - dimensions.margin.bottom
    
     /*---- Draw canvas ----*/
-    const wrapper = d3.select("#img-wrapper")
+    const wrapper = d3.select("#chart-wrapper")
         .append("svg")
         .attr("width", dimensions.width)
         .attr("height", dimensions.height)
