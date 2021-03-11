@@ -8,19 +8,24 @@ const axisComponentsByDimension = {
 }
 
 
-const Axis = ({ dimension, scale, ...props}) => {
+const Axis = ({ dimension, ...props }) => {
     const dimensions = useChartDimensions()
-    const Component = axisComponentsByDimension[dimension] 
-    if (!Component) return null  
-
-    
+    const Component = axisComponentsByDimension[dimension]
+    if (!Component) return null
+  
     return (
-        <Component 
-            {...props}
-            dimensions={dimensions}
-        />
+      <Component
+        dimensions={dimensions}
+        {...props}
+      />
     )
 }
+
+Axis.defaultProps = {
+    dimension: "x",
+    scale: null,
+    formatTick: d3.format(","),
+  }
 
 function AxisHorizontal({dimensions, label, formatTick, scale, ...props}){
 
