@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect } from 'react'
 import './App.css'
 
 import DmgDistChart from "./components/DmgDistChart/DmgDistChart"
+import OptionsPanel from "./components/OptionsPanel/OptionsPanel"
 import {createDmgDist} from "./scripts/combat.js"
 
 
@@ -18,10 +19,15 @@ function App() {
       damage: 1,
       hit: 3
   }
-  let targetAC = 12
 
-  const [dmgData, setDmgData] = useState(createDmgDist(targetAC, dmgDice, modifiers))
+  const [ac, setAC] = useState(12)
+  const [dmgData, setDmgData] = useState(createDmgDist(ac, dmgDice, modifiers))
 
+  useEffect(() => {
+    setDmgData(createDmgDist(ac, dmgDice, modifiers))
+  }, [ac])
+  
+  
 
 
  
@@ -35,6 +41,10 @@ function App() {
           data = {dmgData}
           xAccessor={metricAccessor}
           label="Damage"
+        />
+        <OptionsPanel
+          ac={ac}
+          setAC={setAC}
         />
       </div>
     </div>

@@ -15,8 +15,6 @@ const DmgDistChart = ({data, xAccessor, label}) => {
     marginBottom: 77,
   })
 
-    console.log(data)
-
     const numberOfThresholds = 9
 
     const xScale = d3.scaleLinear()
