@@ -1,5 +1,6 @@
 
-import React, {useState, useRef, useEffect} from "react"
+import {useState, useRef, useEffect} from "react"
+import ResizeObserver from "resize-observer-polyfill"
 
 /* 
     Helper function so that we can programatically call the different types of 
@@ -16,19 +17,20 @@ export const callAccessor = (accessor, d, i) => (
 */
 export const combineChartDimensions = dimensions => {
     let parsedDimensions = {
-      marginTop: 40,
-      marginRight: 30,
-      marginBottom: 40,
-      marginLeft: 75,
-      ...dimensions,
+        marginTop: 40,
+        marginRight: 30,
+        marginBottom: 40,
+        marginLeft: 75,
+        ...dimensions,
     }
-  
+
     return {
-      ...parsedDimensions,
-      boundedHeight: Math.max(parsedDimensions.height - parsedDimensions.marginTop - parsedDimensions.marginBottom, 0),
-      boundedWidth: Math.max(parsedDimensions.width - parsedDimensions.marginLeft - parsedDimensions.marginRight, 0),
+        ...parsedDimensions,
+        boundedHeight: Math.max(parsedDimensions.height - parsedDimensions.marginTop - parsedDimensions.marginBottom, 0),
+        boundedWidth: Math.max(parsedDimensions.width - parsedDimensions.marginLeft - parsedDimensions.marginRight, 0),
     }
-  }
+}
+  
 
 /*
   Set the chart dimensions based on the current size of the chart and dynamically
@@ -37,13 +39,13 @@ export const combineChartDimensions = dimensions => {
 export const useChartDimensions = passedSettings => {
     const ref = useRef()
     const dimensions = combineChartDimensions(passedSettings)
-
+  
     const [width, changeWidth] = useState(0)
     const [height, changeHeight] = useState(0)
 
     useEffect(() => {
         if (dimensions.width && dimensions.height) return [ref, dimensions]
-
+    
         const element = ref.current
 
         /*

@@ -1,17 +1,19 @@
 import React from 'react'
 import * as d3 from "d3"
 
+import './DmgDistChart.css';
+
 import Chart from "../shared/Chart"
 import Bars from "../shared/Bars"
 import Axis from "../shared/Axis"
 
 import {useChartDimensions} from '../../scripts/utils.js'
 
-function DmgDistChart({data, xAccessor, label}){
+const DmgDistChart = ({data, xAccessor, label}) => {
     
-    const [ref, dimensions] = useChartDimensions({
-        marginBottom: 77,
-    })
+  const [ref, dimensions] = useChartDimensions({
+    marginBottom: 77,
+  })
 
     console.log(data)
 
@@ -20,11 +22,12 @@ function DmgDistChart({data, xAccessor, label}){
     const xScale = d3.scaleLinear()
       .domain(d3.extent(data, xAccessor))
       .range([0, dimensions.boundedWidth])
+      .nice(numberOfThresholds)
     
-    const binsGenerator = d3.histogram()
-      .domain(xScale.domain())
-      .value(xAccessor)
-      .thresholds(xScale.ticks(numberOfThresholds))
+      const binsGenerator = d3.histogram()
+        .domain(xScale.domain())
+        .value(xAccessor)
+        .thresholds(xScale.ticks(numberOfThresholds))
 
     console.log(xScale)
 
@@ -36,7 +39,7 @@ function DmgDistChart({data, xAccessor, label}){
       .range([dimensions.boundedHeight, 0])
       .nice()
 
-    const barPadding = 1
+    const barPadding = 2
 
     const xAccessorScaled = d => xScale(d.x0) + barPadding
     const yAccessorScaled = d => yScale(yAccessor(d))
@@ -45,13 +48,19 @@ function DmgDistChart({data, xAccessor, label}){
     const keyAccessor = (d, i) => i
 
     return(
-        <div className="Histogram" ref={ref}>
+      <div className="DmgDist" ref={ref}>
         <Chart dimensions={dimensions}>
           <Axis
             dimensions={dimensions}
             dimension="x"
             scale={xScale}
             label={label}
+          />
+          <Axis
+            dimensions={dimensions}
+            dimension="y"
+            scale={yScale}
+            label="Count"
           />
           <Bars
             data={bins}
@@ -67,6 +76,9 @@ function DmgDistChart({data, xAccessor, label}){
 
 }
 
-
+DmgDistChart.defaultProps = {
+  xAccessor: d => d.x,
+  yAccessor: d => d.y,
+}
 
 export default DmgDistChart

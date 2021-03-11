@@ -8,11 +8,7 @@ import {createDmgDist} from "./scripts/combat.js"
 
 function App() {
 
-  function handleChange(e){
-    setAC(e.target.value)
-    console.log(e.target.value)
-  }
-
+  const metricAccessor = d => d.dmg
 
   let dmgDice = {
     num: 2,
@@ -24,24 +20,23 @@ function App() {
   }
   let targetAC = 12
 
-  const [ac, setAC] = useState(12)
-  const metricAccessor = d => d.dmg
-  const dmgData = createDmgDist(targetAC, dmgDice, modifiers)
+  const [dmgData, setDmgData] = useState(createDmgDist(targetAC, dmgDice, modifiers))
+
+
+
+ 
+  
 
   return (
     <div className="App">
-        <input 
-          type="range" 
-          min={1} 
-          max={35} 
-          value={ac}
-          onChange={handleChange}
-        />
+      <h1> Damage Distribution</h1>
+      <div className="Chart__tableau">
         <DmgDistChart
           data = {dmgData}
           xAccessor={metricAccessor}
           label="Damage"
         />
+      </div>
     </div>
   )
 }
