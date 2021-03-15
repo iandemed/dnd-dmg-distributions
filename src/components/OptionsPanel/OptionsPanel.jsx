@@ -1,5 +1,7 @@
 import React from 'react'
 
+import ScrubInput from '../shared/ScrubInput/ScrubInput.jsx'
+
 const OptionsPanel = ({ac, setAC}) => {
 
 
@@ -13,7 +15,10 @@ const OptionsPanel = ({ac, setAC}) => {
                 max="35" 
                 value={ac} 
                 id="slider" 
-                onChange={(event) => {setAC(event.target.value)}}/>
+                onChange={(event) => {setAC(event.target.value)}}
+            />
+            <ScrubInput/>
+
         </div>
     )
 }
