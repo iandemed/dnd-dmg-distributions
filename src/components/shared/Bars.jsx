@@ -10,7 +10,7 @@ const Bars = ({ data, keyAccessor, xAccessor, yAccessor, widthAccessor, heightAc
         <rect {...props}
           className="Bars__rect"
           key={keyAccessor(d, i)}
-          x={callAccessor(xAccessor, d, i)}
+          x={callAccessor(xAccessor, d, i)} // Use our utitlity functions to call the correctly specified accessor
           y={callAccessor(yAccessor, d, i)}
           width={d3.max([callAccessor(widthAccessor, d, i), 0])}
           height={d3.max([callAccessor(heightAccessor, d, i), 0])}

@@ -10,13 +10,16 @@ import Axis from "../shared/Axis"
 import {useChartDimensions} from '../../scripts/utils.js'
 
 const DmgDistChart = ({data, xAccessor, label}) => {
-    
+  
+
   const [ref, dimensions] = useChartDimensions({
     marginBottom: 77,
   })
 
+    /* Set the number of of bars in the generation of our chart */
     const numberOfThresholds = 9
 
+    /*---- Create the scales ----*/
     const xScale = d3.scaleLinear()
       .domain(d3.extent(data, xAccessor))
       .range([0, dimensions.boundedWidth])
@@ -47,6 +50,7 @@ const DmgDistChart = ({data, xAccessor, label}) => {
 
     return(
       <div className="DmgDist" ref={ref}>
+        {/*---- Draw the Canvas ----*/}
         <Chart dimensions={dimensions}>
           <Axis
             dimensions={dimensions}

@@ -1,68 +1,99 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useCallback, useEffect} from 'react'
 
 import './ScrubInput.css'
 
-const ScrubInput = () => {
+const ScrubInput = ({label, stateVar, setStateVar}) => {
 
-    const [val, setVal] = useState(12)
+
+    /*---- Intialize state variables and references ----*/
+    const [lastX, setLastX] = useState(0)
+    const [scrubbing, setScrubbing] = useState(false)
+
+
+    /* 
+        Allows me to reference specific elements in the DOM using React, in
+        particular attaching and removing the mousemove event listeners
+    */
+    const inputBox = useRef(null)
+    const numInput = useRef(null)
     
-    // Using a side-effect rather than a state variable
-    let lastX = 0
+    useEffect(() => {
+        if (scrubbing) {
+            inputBox.current.addEventListener('mousemove', onScrub)
+        } else {
+            inputBox.current.removeEventListener('mousemove', onScrub)
+        }
+    }, [scrubbing])
+
+    /* 
+        If we do not specify lastX in our dependency array, then it will cache
+        the value of lastX on render and use it everytime scrub() is called
+    */
+    const onScrub = useCallback((e) => { 
+        scrub(e)
+    }, [lastX])
     
-    const scrub = (e) =>
-    {
-        let num = (e.clientX - lastX)/10
-        console.log(num)
+    /*---- Event Handler functions ----*/ 
+
+    const scrub = (e) => {
+
+        let delta = (e.clientX - lastX)/10
+        setStateVar(stateVar+Math.round(delta))
+
+        e.stopPropagation()
+        e.preventDefault()
 
     }
 
-    const handleMouseDown = (e) =>
-    {
+    const handleMouseDown = (e) => {
     
+        if (e.target === numInput.current) return
+
         console.log("Mouse Down")
-        const inputBox=e.target
+        setLastX(e.clientX)
+        setScrubbing(true)
 
-        lastX = e.clientX
-
-        inputBox.addEventListener('mousemove', scrub)
-        
-
+        e.stopPropagation()
         e.preventDefault()
     }
 
-    // Stop dragging once we leave the box to prevent calling and MouseUp event
-    // on the document
-    const handleMouseLeave = (e) => {
-
-        console.log("Mouse Left")
-
-        const input = e.target.children[0]
-        input.blur()
-        
-        const inputBox = e.target
-        inputBox.removeEventListener('mousemove',scrub)
-        
-        e.preventDefault()
-
-        
-    }
 
     const handleMouseUp = (e) =>{
 
-        console.log("Mouse Up")
-        const inputBox = e.target
-        
-        inputBox.removeEventListener('mousemove',scrub)
+        if (e.target === numInput.current && !scrubbing) return
 
+        console.log("Mouse Up")
+        
+        setScrubbing(false)
+        
+        e.stopPropagation()
         e.preventDefault()
     }
 
+    /*
+        Stop dragging once we leave the box to prevent calling and MouseUp event
+        on the document.
+    */
+    const handleMouseLeave = (e) => {
+        
+        setScrubbing(false)
+        
+        e.stopPropagation()
+        e.preventDefault()
+        
+    }
 
 
+    /*---- Generate style and render the componenet ----*/
+
+    /*
+        Create a style object in order to programatically adjust the width of
+        our div
+    */
     const inputFillStyle = {
         height: '100%',
         backgroundColor: '#6B6B6B',
-        width: `${Math.min((val/35)*100, 100)}%`,
+        width: `${Math.min((stateVar/35)*100, 100)}%`,
         position: 'absolute',
         zIndex: -1,
         top: 0,
@@ -72,29 +103,32 @@ const ScrubInput = () => {
 
     return(
         <div 
-            className="input-container"
-            onMouseDown={handleMouseDown} 
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseLeave} // mouseleave does not bubble, meaning it is fired when pointer has exited element AND all descendants
+        className="input-container"
+        onMouseDown={handleMouseDown} 
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave} // mouseleave does not bubble, meaning it is fired when pointer has exited element AND all descendants
+        ref={inputBox}
         >
             
             <label className="input-label">
-                Test:
+                {`${label}:`}
                 <input
                     className="input"
                     type="number" 
                     min="1" 
                     step="1" 
-                    value={val}
+                    value={stateVar}
                     onChange={(e) => {
-                        setVal(e.target.value)
-                        console.log(Math.min(val/35*100, 100))
+                        setStateVar(parseInt(e.target.value)) // need to coerce to int
                     }}
+                    ref={numInput}
                 />
             </label>
+            
             <div style={inputFillStyle}></div>
             <div className="input-background"></div>
 
+            
         </div>
     )    
 

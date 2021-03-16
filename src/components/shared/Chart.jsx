@@ -18,7 +18,7 @@ const Chart = ({dimensions, children}) => {
                 width={dimensions.width}
                 height={dimensions.height}
             >
-                {/*---- Create the bonds of the chart ----*/}
+                {/*---- Create the bounds of the chart ----*/}
                 <g transform={`translate(${dimensions.marginLeft}, ${dimensions.marginTop})`}>
                     {children}
                 </g>

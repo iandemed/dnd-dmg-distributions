@@ -9,15 +9,11 @@ const OptionsPanel = ({ac, setAC}) => {
 
     return(
         <div className="OptionsPanel">
-            <input 
-                type="range" 
-                min="1" 
-                max="35" 
-                value={ac} 
-                id="slider" 
-                onChange={(event) => {setAC(event.target.value)}}
+            <ScrubInput
+                label="Armor Class"
+                stateVar={ac}
+                setStateVar={setAC}
             />
-            <ScrubInput/>
 
         </div>
     )

@@ -18,7 +18,7 @@ export const callAccessor = (accessor, d, i) => (
 export const combineChartDimensions = dimensions => {
     let parsedDimensions = {
         marginTop: 40,
-        marginRight: 30,
+        marginRight: 0,
         marginBottom: 40,
         marginLeft: 75,
         ...dimensions,

@@ -4,3 +4,12 @@
     min-width: 500px;
     overflow: hidden;
 }
+
+.Axis__line{
+    stroke: black;
+}
+
+.Bars__rect{
+    fill: #c00000;
+    transition: all 0.3s ease-out;
+}
