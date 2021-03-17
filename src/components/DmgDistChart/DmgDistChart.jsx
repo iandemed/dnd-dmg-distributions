@@ -17,7 +17,7 @@ const DmgDistChart = ({data, xAccessor, label}) => {
   })
 
     /* Set the number of of bars in the generation of our chart */
-    const numberOfThresholds = 9
+    const numberOfThresholds = 12
 
     /*---- Create the scales ----*/
     const xScale = d3.scaleLinear()
@@ -29,8 +29,6 @@ const DmgDistChart = ({data, xAccessor, label}) => {
         .domain(xScale.domain())
         .value(xAccessor)
         .thresholds(xScale.ticks(numberOfThresholds))
-
-    console.log(xScale)
 
     const bins = binsGenerator(data)
 

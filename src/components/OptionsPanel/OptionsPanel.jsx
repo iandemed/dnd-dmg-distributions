@@ -1,6 +1,7 @@
 import React from 'react'
 
 import ScrubInput from '../shared/ScrubInput/ScrubInput.jsx'
+import ToggleSwitch from '../shared/ToggleSwitch/ToggleSwitch.jsx'
 
 const OptionsPanel = ({ac, setAC}) => {
 
@@ -14,7 +15,9 @@ const OptionsPanel = ({ac, setAC}) => {
                 stateVar={ac}
                 setStateVar={setAC}
             />
-
+            <ToggleSwitch
+                label="Adv"
+            />
         </div>
     )
 }

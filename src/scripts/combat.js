@@ -61,14 +61,14 @@ function combatDamage(targetAC, damageDice, modifiers, advantage = false, disadv
     }
 }
 
-function createDmgDist(targetAC, damageDice, modifiers, n = 1000){
+function createDmgDist(targetAC, damageDice, modifiers, advantage, disadvantage, n = 1000){
 
     let dmgDist = []
 
-    for (let i = 0; i < 1000; i++){
+    for (let i = 0; i < n; i++){
         // I process the data in d3 as a JSON object, so I save the data
         // as an object with dmg as the "column"
-        dmgDist.push({"dmg" : combatDamage(targetAC, damageDice, modifiers)})
+        dmgDist.push({"dmg" : combatDamage(targetAC, damageDice, modifiers, advantage, disadvantage,)})
     }
 
     return dmgDist

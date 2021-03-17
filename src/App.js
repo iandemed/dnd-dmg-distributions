@@ -12,20 +12,22 @@ function App() {
   const metricAccessor = d => d.dmg
 
   let dmgDice = {
-    num: 2,
+    num: 1,
     sides: 12,
   }
   let modifiers = {
-      damage: 1,
-      hit: 3
+      damage: 14,
+      hit: -2
   }
 
   const [ac, setAC] = useState(12)
   const [dmgData, setDmgData] = useState(createDmgDist(ac, dmgDice, modifiers))
+  const [advantage, setAdvantage] = useState(true)
+  const [disadvantage, setDisadvantage] = useState(false)
 
   useEffect(() => {
-    setDmgData(createDmgDist(ac, dmgDice, modifiers))
-  }, [ac])
+    setDmgData(createDmgDist(ac, dmgDice, modifiers, advantage, disadvantage))
+  }, [ac, advantage, disadvantage])
   
   
 
