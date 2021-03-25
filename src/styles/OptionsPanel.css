@@ -1,0 +1,8 @@
+.OptionsPanel {
+    min-width: 120px;
+    max-width: 30%;
+}
+
+.OptionsPanel > .switch-wrapper {
+    padding: 10px;
+}

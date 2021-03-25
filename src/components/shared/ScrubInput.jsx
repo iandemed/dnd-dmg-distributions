@@ -49,7 +49,6 @@ const ScrubInput = ({label, stateVar, setStateVar}) => {
     
         if (e.target === numInput.current) return
 
-        console.log("Mouse Down")
         setLastX(e.clientX)
         setScrubbing(true)
 
@@ -61,8 +60,6 @@ const ScrubInput = ({label, stateVar, setStateVar}) => {
     const handleMouseUp = (e) =>{
 
         if (e.target === numInput.current && !scrubbing) return
-
-        console.log("Mouse Up")
         
         setScrubbing(false)
         

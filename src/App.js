@@ -11,8 +11,6 @@ function App() {
 
   const metricAccessor = d => d.dmg
 
-  console.log(metricAccessor)
-
   let dmgDice = {
     num: 1,
     sides: 12,
@@ -37,8 +35,7 @@ function App() {
  
   return (
     <div className="App">
-      <h1> Damage Distribution</h1>
-      <div className="Chart__tableau">
+      <div className="dashboard">
         <DmgDistChart
           data = {dmgData}
           xAccessor={metricAccessor}

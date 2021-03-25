@@ -5,8 +5,11 @@ import "../../styles/ToggleSwitch.css"
 const ToggleSwitch = ({label}) => {
 
     return(
-        <div>
-            <label className="switch">
+        <div className="switch-wrapper">
+            <label 
+                className="switch"
+                tabIndex="0"
+            >
                 {label}
                 <input 
                     type="checkbox"

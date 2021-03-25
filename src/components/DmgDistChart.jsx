@@ -10,13 +10,19 @@ import Axis from "./shared/Axis"
 import {useChartDimensions} from '../scripts/utils'
 
 /**
- * Foo takes any argument.
- * The return value is 'baz' in all cases.
- * @param {Object} data - Any argument
- * @param {label} [optionalArg] - An optional argument that is a string
+ * React component to generate a histogram using D3
+ * 
+ * @param {Object} data - a JSON-formated object containing the data that you wish to visualize
+ * @param {function} xAccessor - An accessor function for the data displayed on the x-axis
+ * @param {string} label - X-axis label
+ * 
+ * @returns React element object
+ * 
+ * @requires Chart - React component used to create the canvas
+ * @requires Axis - React component used to draw the axes
+ * @requires Bars - React component used to draw the bars of the histogram
+ * 
  */
-
-
 
 const DmgDistChart = ({data, xAccessor, label}) => {
   

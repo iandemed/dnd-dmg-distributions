@@ -1,7 +1,8 @@
 .DmgDist {
-    height: 500px;
+    height: 400px;
     flex: 1;
-    min-width: 500px;
+    min-width: 400px;
+    max-width: 65%;
     overflow: hidden;
 }
 
