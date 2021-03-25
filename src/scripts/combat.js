@@ -51,14 +51,15 @@ function makeAttack(targetAC, modifier, advantage = false, disadvantage = false)
 function combatDamage(targetAC, dice_num, dice_sides, damage_modifier, hit_modifier, advantage = false, disadvantage = false){
     
     let attack = makeAttack(targetAC, hit_modifier, advantage, disadvantage)
+    let dmg = 0
 
     if (attack.success && attack.crit){
-        return rollDice(dice_num, dice_sides, damage_modifier) + rollDice(dice_num, dice_sides, damage_modifier)
+        dmg = rollDice(dice_num, dice_sides, damage_modifier) + rollDice(dice_num, dice_sides, damage_modifier)
     } else if (attack.success){
-        return rollDice(dice_num, dice_sides, damage_modifier)
-    } else {
-        return 0
+        dmg = rollDice(dice_num, dice_sides, damage_modifier)
     }
+
+    return Math.max(0, dmg)
 }
 
 function createDmgDist(targetAC, dice_num, dice_sides, damage_modifier, hit_modifier, advantage, disadvantage, n = 1000){
