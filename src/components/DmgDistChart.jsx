@@ -1,13 +1,22 @@
 import React from 'react'
 import * as d3 from "d3"
 
-import './DmgDistChart.css';
+import '../styles/DmgDistChart.css';
 
-import Chart from "../shared/Chart"
-import Bars from "../shared/Bars"
-import Axis from "../shared/Axis"
+import Chart from "./shared/Chart"
+import Bars from "./shared/Bars"
+import Axis from "./shared/Axis"
 
-import {useChartDimensions} from '../../scripts/utils.js'
+import {useChartDimensions} from '../scripts/utils'
+
+/**
+ * Foo takes any argument.
+ * The return value is 'baz' in all cases.
+ * @param {Object} data - Any argument
+ * @param {label} [optionalArg] - An optional argument that is a string
+ */
+
+
 
 const DmgDistChart = ({data, xAccessor, label}) => {
   

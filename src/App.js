@@ -1,8 +1,8 @@
 import React, {useState, useEffect } from 'react'
-import './App.css'
+import './styles/App.css'
 
-import DmgDistChart from "./components/DmgDistChart/DmgDistChart"
-import OptionsPanel from "./components/OptionsPanel/OptionsPanel"
+import DmgDistChart from "./components/DmgDistChart"
+import OptionsPanel from "./components/OptionsPanel"
 import {createDmgDist} from "./scripts/combat.js"
 
 
@@ -10,6 +10,8 @@ import {createDmgDist} from "./scripts/combat.js"
 function App() {
 
   const metricAccessor = d => d.dmg
+
+  console.log(metricAccessor)
 
   let dmgDice = {
     num: 1,
@@ -33,8 +35,6 @@ function App() {
 
 
  
-  
-
   return (
     <div className="App">
       <h1> Damage Distribution</h1>

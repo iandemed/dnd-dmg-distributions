@@ -1,6 +1,6 @@
 import React, {useState, useRef, useCallback, useEffect} from 'react'
 
-import './ScrubInput.css'
+import '../../styles/ScrubInput.css'
 
 const ScrubInput = ({label, stateVar, setStateVar}) => {
 
