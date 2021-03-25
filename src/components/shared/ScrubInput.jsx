@@ -2,7 +2,7 @@ import React, {useState, useRef, useCallback, useEffect} from 'react'
 
 import '../../styles/ScrubInput.css'
 
-const ScrubInput = ({label, stateVar, setStateVar}) => {
+const ScrubInput = ({label, stateVar, setStateVar, visual_max = 35, min_value = 0}) => {
 
 
     /*---- Intialize state variables and references ----*/
@@ -38,7 +38,9 @@ const ScrubInput = ({label, stateVar, setStateVar}) => {
     const scrub = (e) => {
 
         let delta = (e.clientX - lastX)/10
-        setStateVar(stateVar+Math.round(delta))
+        let tgt_value = stateVar+Math.round(delta)
+
+        if (tgt_value > min_value) setStateVar(tgt_value)
 
         e.stopPropagation()
         e.preventDefault()
@@ -90,7 +92,7 @@ const ScrubInput = ({label, stateVar, setStateVar}) => {
     const inputFillStyle = {
         height: '100%',
         backgroundColor: '#6B6B6B',
-        width: `${Math.min((stateVar/35)*100, 100)}%`,
+        width: `${Math.min((stateVar/visual_max)*100, 100)}%`,
         position: 'absolute',
         zIndex: -1,
         top: 0,

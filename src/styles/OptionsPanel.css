@@ -3,6 +3,6 @@
     max-width: 30%;
 }
 
-.OptionsPanel > .switch-wrapper {
-    padding: 10px;
+.OptionsPanel > * {
+    margin-bottom: 10px;
 }

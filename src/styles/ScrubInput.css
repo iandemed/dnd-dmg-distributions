@@ -15,6 +15,18 @@
     font-size: 1em;
 }
 
+
+.scrub-icon{
+    max-width: 30px;
+    max-height: 30px;
+    padding-right: 10px;
+}
+
+.scrub-icon-container{
+    display: flex;
+    align-items: center;
+}
+
 /* 
     Remove the styling for the focus to draw attention to the whole componenet
     rather than the input tag

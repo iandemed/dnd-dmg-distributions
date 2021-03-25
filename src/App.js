@@ -11,23 +11,20 @@ function App() {
 
   const metricAccessor = d => d.dmg
 
-  let dmgDice = {
-    num: 1,
-    sides: 12,
-  }
-  let modifiers = {
-      damage: 14,
-      hit: -2
-  }
-
   const [ac, setAC] = useState(12)
-  const [dmgData, setDmgData] = useState(createDmgDist(ac, dmgDice, modifiers))
   const [advantage, setAdvantage] = useState(true)
   const [disadvantage, setDisadvantage] = useState(false)
+  const [dice_sides, setDiceSides] = useState(12)
+  const [dice_num, setDiceNum] = useState(1)
+  const [hit_modifier, setHitModifier] = useState(3)
+  const [damage_modifier, setDamageModifier] = useState(1)
+
+
+  const [dmgData, setDmgData] = useState(createDmgDist(ac, dice_num, dice_sides, damage_modifier, hit_modifier, advantage, disadvantage))
 
   useEffect(() => {
-    setDmgData(createDmgDist(ac, dmgDice, modifiers, advantage, disadvantage))
-  }, [ac, advantage, disadvantage])
+    setDmgData(createDmgDist(ac, dice_num, dice_sides, damage_modifier, hit_modifier, advantage, disadvantage))
+  }, [ac, advantage, disadvantage, damage_modifier, hit_modifier, dice_sides, dice_num])
   
   
 
@@ -44,6 +41,18 @@ function App() {
         <OptionsPanel
           ac={ac}
           setAC={setAC}
+          advantage={advantage}
+          setAdvantage={setAdvantage}
+          disadvantage={disadvantage}
+          setDisadvantage={setDisadvantage}
+          dice_sides={dice_sides}
+          setDiceSides={setDiceSides}
+          dice_num={dice_num}
+          setDiceNum={setDiceNum}
+          hit_modifier={hit_modifier}
+          setHitModifier={setHitModifier}
+          damage_modifier={damage_modifier}
+          setDamageModifier={setDamageModifier}
         />
       </div>
     </div>
