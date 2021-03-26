@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/dnd-dmg-distributions/static/css/main.c0690718.chunk.css",
-    "main.js": "/dnd-dmg-distributions/static/js/main.a13a5d1f.chunk.js",
-    "main.js.map": "/dnd-dmg-distributions/static/js/main.a13a5d1f.chunk.js.map",
-    "runtime-main.js": "/dnd-dmg-distributions/static/js/runtime-main.2bcf164d.js",
-    "runtime-main.js.map": "/dnd-dmg-distributions/static/js/runtime-main.2bcf164d.js.map",
+    "main.css": "/dnd-dmg-distributions/static/css/main.59898978.chunk.css",
+    "main.js": "/dnd-dmg-distributions/static/js/main.432f53ca.chunk.js",
+    "main.js.map": "/dnd-dmg-distributions/static/js/main.432f53ca.chunk.js.map",
+    "runtime-main.js": "/dnd-dmg-distributions/static/js/runtime-main.d4ab4b72.js",
+    "runtime-main.js.map": "/dnd-dmg-distributions/static/js/runtime-main.d4ab4b72.js.map",
     "static/js/2.ce5af21a.chunk.js": "/dnd-dmg-distributions/static/js/2.ce5af21a.chunk.js",
     "static/js/2.ce5af21a.chunk.js.map": "/dnd-dmg-distributions/static/js/2.ce5af21a.chunk.js.map",
-    "static/js/3.c47fe5bf.chunk.js": "/dnd-dmg-distributions/static/js/3.c47fe5bf.chunk.js",
-    "static/js/3.c47fe5bf.chunk.js.map": "/dnd-dmg-distributions/static/js/3.c47fe5bf.chunk.js.map",
+    "static/js/3.015252c5.chunk.js": "/dnd-dmg-distributions/static/js/3.015252c5.chunk.js",
+    "static/js/3.015252c5.chunk.js.map": "/dnd-dmg-distributions/static/js/3.015252c5.chunk.js.map",
     "index.html": "/dnd-dmg-distributions/index.html",
-    "static/css/main.c0690718.chunk.css.map": "/dnd-dmg-distributions/static/css/main.c0690718.chunk.css.map",
+    "static/css/main.59898978.chunk.css.map": "/dnd-dmg-distributions/static/css/main.59898978.chunk.css.map",
     "static/js/2.ce5af21a.chunk.js.LICENSE.txt": "/dnd-dmg-distributions/static/js/2.ce5af21a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2bcf164d.js",
+    "static/js/runtime-main.d4ab4b72.js",
     "static/js/2.ce5af21a.chunk.js",
-    "static/css/main.c0690718.chunk.css",
-    "static/js/main.a13a5d1f.chunk.js"
+    "static/css/main.59898978.chunk.css",
+    "static/js/main.432f53ca.chunk.js"
   ]
 }
