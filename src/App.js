@@ -3,6 +3,7 @@ import './styles/App.css'
 
 import DmgDistChart from "./components/DmgDistChart"
 import OptionsPanel from "./components/OptionsPanel"
+import Footer from './components/Footer'
 import {createDmgDist} from "./scripts/combat.js"
 
 
@@ -32,9 +33,17 @@ function App() {
  
   return (
     <div className="App">
+
+
+    <header className="App-header">
+        <a href="./">
+        </a>
+        <h2>Attack Damage Distribution Dashboard</h2>
+    </header>
+
+
       <div className="dashboard">
         <div className = "gph-container">
-          <h4> Attack Damage Distribution </h4>
           <DmgDistChart
             data = {dmgData}
             xAccessor={metricAccessor}
@@ -58,6 +67,7 @@ function App() {
           setDamageModifier={setDamageModifier}
         />
       </div>
+      <Footer/>
     </div>
   )
 }

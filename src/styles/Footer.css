@@ -1,0 +1,14 @@
+.icon {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    padding: 5px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f1f3f5;
+}
