@@ -12,7 +12,7 @@ function App() {
   const metricAccessor = d => d.dmg
 
   const [ac, setAC] = useState(12)
-  const [advantage, setAdvantage] = useState(true)
+  const [advantage, setAdvantage] = useState(false)
   const [disadvantage, setDisadvantage] = useState(false)
   const [dice_sides, setDiceSides] = useState(12)
   const [dice_num, setDiceNum] = useState(1)

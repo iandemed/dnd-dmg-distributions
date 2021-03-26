@@ -52,9 +52,13 @@ const OptionsPanel = ({ac, setAC, advantage, setAdvantage,
 
             <ToggleSwitch
                 label="Adv"
+                stateVar={advantage}
+                setStateVar={setAdvantage}
             />
             <ToggleSwitch
                 label="Disadv"
+                stateVar={disadvantage}
+                setStateVar={setDisadvantage}
             />
         </div>
     )

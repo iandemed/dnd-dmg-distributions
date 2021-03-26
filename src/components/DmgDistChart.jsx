@@ -29,6 +29,7 @@ const DmgDistChart = ({data, xAccessor, label}) => {
 
   const [ref, dimensions] = useChartDimensions({
     marginBottom: 77,
+    marginRight: 10
   })
 
     /* Set the number of of bars in the generation of our chart */

@@ -3,6 +3,16 @@
     display: inline-block;
     width: 120px;
     height: 34px;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+}
+
+.switch:focus-within{ 
+    border-style: solid;
+    border-color: #c00000;
+    border-width: 2px;
 }
 
 /* Hide default checkbox so we only interact with label tag */

@@ -62,7 +62,7 @@ function combatDamage(targetAC, dice_num, dice_sides, damage_modifier, hit_modif
     return Math.max(0, dmg)
 }
 
-function createDmgDist(targetAC, dice_num, dice_sides, damage_modifier, hit_modifier, advantage, disadvantage, n = 100){
+function createDmgDist(targetAC, dice_num, dice_sides, damage_modifier, hit_modifier, advantage, disadvantage, n = 1000){
 
     let dmgDist = []
     

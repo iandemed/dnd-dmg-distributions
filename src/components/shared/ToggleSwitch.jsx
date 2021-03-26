@@ -2,8 +2,7 @@ import React from 'react'
 
 import "../../styles/ToggleSwitch.css"
 
-const ToggleSwitch = ({label}) => {
-
+const ToggleSwitch = ({label, stateVar, setStateVar}) => {
 
     return(
         <div className="switch-wrapper">
@@ -17,15 +16,20 @@ const ToggleSwitch = ({label}) => {
                     */
                     if (e.key === "Enter"){
                         let inputTag =  e.target.firstElementChild
-
-                        inputTag.checked = !inputTag.checked
-
+                        setStateVar(!inputTag.checked)
                     }
                 }}
             >
                 {label}
                 <input 
+                    className="toggle-input"
                     type="checkbox"
+                    checked={stateVar}
+                    onChange={(e) => {
+                        let inputTag =  e.target
+                        let value = inputTag.type === 'checkbox' ? inputTag.checked : inputTag.value
+                        setStateVar(value)
+                    }}
 
                 />
                 <span className="slider"></span>

@@ -1,5 +1,5 @@
 .input-container {
-    height: 50px;
+    height: 1.65em;
     width: 100%;
     position: relative;
 }
@@ -48,7 +48,7 @@
     border-color: black;
     border-width: 2px;
     box-sizing: border-box;
-    box-shadow: 5px 8px 10px #C9C9C9;
+    box-shadow: 2.5px 4px 2px #C9C9C9;
 }
 
 /* 
