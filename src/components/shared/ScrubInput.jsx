@@ -20,8 +20,10 @@ const ScrubInput = ({label, stateVar, setStateVar, visual_max = 35, min_value = 
     useEffect(() => {
         if (scrubbing) {
             inputBox.current.addEventListener('mousemove', onScrub)
+            inputBox.current.addEventListener('touchmove', onScrub)
         } else {
             inputBox.current.removeEventListener('mousemove', onScrub)
+            inputBox.current.removeEventListener('touchmove', onScrub)
         }
     }, [scrubbing])
 
@@ -36,37 +38,43 @@ const ScrubInput = ({label, stateVar, setStateVar, visual_max = 35, min_value = 
     /*---- Event Handler functions ----*/ 
 
     const scrub = (e) => {
+        let delta = (e.type !== "touchmove") ? (e.clientX - lastX)/10 : (e.targetTouches[0].clientX  - lastX)/10
 
-        let delta = (e.clientX - lastX)/10
         let tgt_value = stateVar+Math.round(delta)
+
+        console.log(tgt_value)
 
         if (tgt_value >= min_value) setStateVar(tgt_value)
 
         e.stopPropagation()
-        e.preventDefault()
-
+        if (e.type !== "touchmove") e.preventDefault()
     }
 
-    const handleMouseDown = (e) => {
-    
+    const handleStartScrub = (e) => {
+        
         if (e.target === numInput.current) return
 
-        setLastX(e.clientX)
+        let newLastX =  (e.type !== "touchstart") ? e.clientX : e.targetTouches[0].clientX
+
+        setLastX(newLastX)
         setScrubbing(true)
 
         e.stopPropagation()
-        e.preventDefault()
+        if (e.type !== "touchstart") {
+            e.preventDefault()
+        }
     }
 
 
-    const handleMouseUp = (e) =>{
+    const handleStopScrub = (e) =>{
 
         if (e.target === numInput.current && !scrubbing) return
-        
+
         setScrubbing(false)
         
         e.stopPropagation()
-        e.preventDefault()
+        if (e.type !== "touchend") e.preventDefault()
+        
     }
 
     /*
@@ -103,8 +111,10 @@ const ScrubInput = ({label, stateVar, setStateVar, visual_max = 35, min_value = 
     return(
         <div 
         className="input-container"
-        onMouseDown={handleMouseDown} 
-        onMouseUp={handleMouseUp}
+        onMouseDown={handleStartScrub}
+        onTouchStart={handleStartScrub}
+        onMouseUp={handleStopScrub}
+        onTouchEnd={handleStopScrub}
         onMouseLeave={handleMouseLeave} // mouseleave does not bubble, meaning it is fired when pointer has exited element AND all descendants
         ref={inputBox}
         >
