@@ -33,11 +33,14 @@ function App() {
   return (
     <div className="App">
       <div className="dashboard">
-        <DmgDistChart
-          data = {dmgData}
-          xAccessor={metricAccessor}
-          label="Damage"
-        />
+        <div className = "gph-container">
+          <h4> Attack Damage Distribution </h4>
+          <DmgDistChart
+            data = {dmgData}
+            xAccessor={metricAccessor}
+            label="Damage"
+          />
+        </div>
         <OptionsPanel
           ac={ac}
           setAC={setAC}

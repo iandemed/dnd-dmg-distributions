@@ -1,8 +1,16 @@
+
+.switch-wrapper{
+    display: inline-block;
+    margin: 5px;
+}
+
 .switch {
     position: relative; /* Necesasry to have absolute positioning */
     display: inline-block;
-    width: 120px;
+    width: 100px;
     height: 34px;
+
+    font-size: 0.75em;
 
     border-style: solid;
     border-color: black;
@@ -49,7 +57,7 @@
     position: absolute;
     transform: translate(0 ,-50%); /* reposition element in horizontal and vertical directions */
     top: 50%;
-    left: 50%;
+    left: 60%;
 }
 
 /*

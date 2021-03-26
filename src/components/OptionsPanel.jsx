@@ -33,7 +33,7 @@ const OptionsPanel = ({ac, setAC, advantage, setAdvantage,
                 visual_max={10}
             />
 
-            <h4>Modifier:</h4>    
+            <h4>Modifiers:</h4>    
     
             <ScrubInput
                 label="Hit"
@@ -49,17 +49,19 @@ const OptionsPanel = ({ac, setAC, advantage, setAdvantage,
                 visual_max={10}
                 min_value={-10}
             />
-
-            <ToggleSwitch
-                label="Adv"
-                stateVar={advantage}
-                setStateVar={setAdvantage}
-            />
-            <ToggleSwitch
-                label="Disadv"
-                stateVar={disadvantage}
-                setStateVar={setDisadvantage}
-            />
+            <div>
+                <ToggleSwitch
+                    label="Adv"
+                    stateVar={advantage}
+                    setStateVar={setAdvantage}
+                />
+                <ToggleSwitch
+                    label="Disadv"
+                    stateVar={disadvantage}
+                    setStateVar={setDisadvantage}
+                />
+            </div>
+           
         </div>
     )
 }
