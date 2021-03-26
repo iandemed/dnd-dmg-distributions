@@ -6,7 +6,7 @@ function rollDice(num, sides, modifier = 0){
     // Roll the dice the specified number of times
     for (let i=0; i < num; i++){
         // Modifiers are applied seperately to each roll
-        diceTotal += 1 + Math.floor(Math.random() * (sides)) + modifier
+        diceTotal += (1 + Math.floor(Math.random() * (sides))) + modifier
     }
         
     return diceTotal
@@ -26,15 +26,15 @@ function makeAttack(targetAC, modifier, advantage = false, disadvantage = false)
     let attackRoll = 0
 
     if (advantage && !disadvantage) {
-        let rolls = [rollDice(1,20, modifier), rollDice(1,20, modifier)]
+        let rolls = [rollDice(1, 20, modifier), rollDice(1,20, modifier)]
         attackRoll = Math.max(...rolls)
     } else if (disadvantage && !advantage) {
-        let rolls = [rollDice(1,20, modifier), rollDice(1,20, modifier)]
+        let rolls = [rollDice(1, 20, modifier), rollDice(1,20, modifier)]
         attackRoll = Math.min(...rolls)
     } else {
-        attackRoll = rollDice(1,20, modifier)
+        attackRoll = rollDice(1, 20, modifier)
     }
-    
+
     if (attackRoll - modifier === 20){
         // A natural 20 always results in a successful hit regardless of the roll
         return {success: true, crit: true}
@@ -62,7 +62,7 @@ function combatDamage(targetAC, dice_num, dice_sides, damage_modifier, hit_modif
     return Math.max(0, dmg)
 }
 
-function createDmgDist(targetAC, dice_num, dice_sides, damage_modifier, hit_modifier, advantage, disadvantage, n = 1000){
+function createDmgDist(targetAC, dice_num, dice_sides, damage_modifier, hit_modifier, advantage, disadvantage, n = 100){
 
     let dmgDist = []
     

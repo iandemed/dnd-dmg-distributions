@@ -2,7 +2,7 @@ import React, {useState, useRef, useCallback, useEffect} from 'react'
 
 import '../../styles/ScrubInput.css'
 
-const ScrubInput = ({label, stateVar, setStateVar, visual_max = 35, min_value = 0}) => {
+const ScrubInput = ({label, stateVar, setStateVar, visual_max = 35, min_value = 1}) => {
 
 
     /*---- Intialize state variables and references ----*/
@@ -40,7 +40,7 @@ const ScrubInput = ({label, stateVar, setStateVar, visual_max = 35, min_value = 
         let delta = (e.clientX - lastX)/10
         let tgt_value = stateVar+Math.round(delta)
 
-        if (tgt_value > min_value) setStateVar(tgt_value)
+        if (tgt_value >= min_value) setStateVar(tgt_value)
 
         e.stopPropagation()
         e.preventDefault()
@@ -114,7 +114,7 @@ const ScrubInput = ({label, stateVar, setStateVar, visual_max = 35, min_value = 
                 <input
                     className="input"
                     type="number" 
-                    min="1" 
+                    min={min_value} 
                     step="1" 
                     value={stateVar}
                     onChange={(e) => {
