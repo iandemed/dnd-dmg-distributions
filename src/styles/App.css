@@ -20,6 +20,11 @@ body {
   margin: 0.75em;
 }
 
+.gph-container{
+  min-width: 300px;
+  max-width: 70%;
+}
+
 h4{
   color: #000000;
   margin-top: 10px;

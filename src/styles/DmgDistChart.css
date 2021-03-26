@@ -1,8 +1,8 @@
 .DmgDist {
-    height: 400px;
+    max-height: 80vh;
     flex: 1;
-    min-width: 400px;
-    max-width: 65%;
+    min-width: 300px;
+    width: 60vw;
     overflow: hidden;
 }
 
@@ -12,5 +12,5 @@
 
 .Bars__rect{
     fill: #c00000;
-    transition: all 0.3s ease-out;
+    transition: all 0.02s ease-out;
 }
